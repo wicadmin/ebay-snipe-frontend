@@ -15,7 +15,7 @@
         {{ snipe.auction.currentBid | currency }}
         <span *ngIf="snipe.auction.shippingCost > 0"> + {{ snipe.auction.shippingCost | currency }}</span>
       </span>
-      <span matLine>{{ snipe.bid | currency }} on {{ snipe.snipeTime | date:'medium' }}</span>
+      <span matLine>{{ snipe.bid | currency }} on {{ snipe.snipeTime | date:'medium':'UTC' }}</span>
       <span matLine *ngIf="snipe.bid < snipe.auction.currentBid">Bid is smaller than Current Bid!</span>
       <button mat-mini-fab color="warn" (click)="delete(snipe)">
         <mat-icon>delete</mat-icon>
