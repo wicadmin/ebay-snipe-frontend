@@ -30,6 +30,6 @@ import { Snipe } from '../_interfaces/snipe';
 })
 export class NewSnipeComponent {
   constructor(
-    public dialog: MatDialogRef<NewSnipeComponent>
+    public dialog: MatDialogRef<NewSnipeComponent>,
     @Inject(MAT_DIALOG_DATA) public snipe: Snipe) { }
 }
