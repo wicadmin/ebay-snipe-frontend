@@ -13,18 +13,18 @@ export class SnipeService {
   }
 
   getAuction(id: string): Observable<Auction> {
-    return this.http.get<Auction>('/auction/${id}');
+    return this.http.get<Auction>(`/auction/${id}`);
   }
 
   getAuctionSnipe(id: string): Observable<Snipe> {
-    return this.http.get<Snipe>('/auction/${id}/snipe');
+    return this.http.get<Snipe>(`/auction/${id}/snipe`);
   }
 
   snipe(snipe: Snipe): Observable<Snipe> {
-    return this.http.post<Snipe>('/auction/${snipe.auctionId}/snipe', snipe);
+    return this.http.post<Snipe>(`/auction/${snipe.auctionId}/snipe`, snipe);
   }
 
   deleteSnipe(snipe: Snipe): Observable<Snipe> {
-    return this.http.delete<Snipe>('/auction/${snipe.auctionId}/snipe');
+    return this.http.delete<Snipe>(`/auction/${snipe.auctionId}/snipe`);
   }
 }
