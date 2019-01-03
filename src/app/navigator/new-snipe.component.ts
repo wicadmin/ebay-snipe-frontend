@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Snipe } from '../_interfaces/snipe';
 
 @Component({
@@ -29,7 +29,7 @@ import { Snipe } from '../_interfaces/snipe';
   `
 })
 export class NewSnipeComponent {
-  constructor(public dialog: MatDialogRef<NewSnipeComponent>) { }
-
-  snipe: Snipe = {auctionId: '', bid: 0, quantity: 1, description: ''};
+  constructor(
+    public dialog: MatDialogRef<NewSnipeComponent>
+    @Inject(MAT_DIALOG_DATA) public snipe: Snipe) { }
 }
