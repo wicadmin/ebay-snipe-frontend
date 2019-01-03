@@ -5,20 +5,20 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   template: `
     <h1 mat-dialog-title>{{ data.title }}</h1>
     <div mat-dialog-content>
-      <mat-form-field style="width: 100%;">
+      <mat-form-field style="width: 100%;" appearance="outline">
         <mat-label>Auction ID</mat-label>
-        <input matInput [(ngModel)]="data.snipe.auctionId" placeholder="eBay Auction ID" appearance="outline" required>
+        <input matInput [(ngModel)]="data.snipe.auctionId" placeholder="eBay Auction ID" required>
       </mat-form-field>
       <br>
-      <mat-form-field style="width: 100%;">
+      <mat-form-field style="width: 100%;" appearance="outline">
         <span matPrefix>$</span>
         <mat-label>Bid</mat-label>
-        <input matInput type="number" [(ngModel)]="data.snipe.bid" placeholder="Enter Bid Amount" appearance="outline" required>
+        <input matInput type="number" [(ngModel)]="data.snipe.bid" placeholder="Enter Bid Amount" required>
       </mat-form-field>
       <br>
-      <mat-form-field style="width: 100%;">
+      <mat-form-field style="width: 100%;" appearance="outline">
         <mat-label>Description</mat-label>
-        <input matInput [(ngModel)]="data.snipe.description" placeholder="Optional Description" appearance="outline">
+        <input matInput [(ngModel)]="data.snipe.description" placeholder="Optional Description">
       </mat-form-field>
     </div>
     <div mat-dialog-actions>
