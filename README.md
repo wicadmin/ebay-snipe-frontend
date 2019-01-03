@@ -1,27 +1,57 @@
-# Ebay
+# eBay Snipe FrontEnd
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
+This project is a FrontEnd to consume [eBay Snipe Server](https://github.com/ruippeixotog/ebay-snipe-server).
 
-## Development server
+## Pre Requisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Install [eBay Snipe Server](https://github.com/ruippeixotog/ebay-snipe-server):
+```bash
+docker run -d -p 3647:3647 \
+-e 'EBAY_USERNAME=<your_username>' -e 'EBAY_PASSWORD=<your_password>' \
+ruippeixotog/ebay-snipe-server:0.2-SNAPSHOT
+```
 
-## Code scaffolding
+2. Install Angular CLI:
+```bash
+npm install -g @angular/cli
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. Clone this project:
+```bash
+git clone https://github.com/Helvio88
+```
 
-## Build
+4. Compile this project:
+```bash
+cd ebay-snipe-frontend
+ng build --prod
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+5. Copy dist files to your web folder and set permissions:
+```bash
+cp dist/ebay /var/www/ebay -R
+chown www-data:www-data /var/www/ebay -R
+```
 
-## Running unit tests
+## NginX Configuration
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Only relevant part is displayed. For more information, visit [NginX](https://www.nginx.com/)
 
-## Running end-to-end tests
+```
+	root /var/www/ebay/;
+	index index.html;
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+	location /auction {
+		proxy_pass http://127.0.0.1:3647/auction;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+	location /snipes {
+		proxy_pass http://127.0.0.1:3647/snipes;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+```
