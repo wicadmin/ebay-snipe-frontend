@@ -11,9 +11,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
       </mat-form-field>
       <br>
       <mat-form-field style="width: 100%;" appearance="outline">
-        <span matPrefix>$</span>
         <mat-label>Bid</mat-label>
         <input matInput type="number" [(ngModel)]="data.snipe.bid" placeholder="Enter Bid Amount" required>
+        <span matPrefix>$</span>
       </mat-form-field>
       <br>
       <mat-form-field style="width: 100%;" appearance="outline">
