@@ -13,7 +13,7 @@
       <span matLine>{{ snipe.auction.currentBid }} + {{ snipe.auction.shippingCost }} - {{ snipe.auction.seller.id }} ({{ snipe.auction.seller.feedback }} - {{ snipe.auction.seller.positivePercentage }}%)</span>
       <span matLine>{{ snipe.bid }} on {{ snipe.snipeTime | date:'medium' }}</span>
 
-      <button mat-fab (click)="delete(snipe)">
+      <button mat-mini-fab (click)="delete(snipe)">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-list-item>
