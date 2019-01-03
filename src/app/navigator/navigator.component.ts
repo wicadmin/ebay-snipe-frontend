@@ -33,6 +33,8 @@ export class NavigatorComponent implements OnInit {
             auction.currentBid = Number(currentBid.substr(4));
             auction.shippingCost = Number(shippingCost.substr(4));
 
+            auction.endingAt = new Date(auction.endingAt);
+
             snipe.auction = auction;
           }
         );
@@ -40,6 +42,8 @@ export class NavigatorComponent implements OnInit {
         // Transform bid to Number
         const bid: any = snipe.bid || '';
         snipe.bid = Number(bid.substr(4));
+
+        snipe.snipeTime = new Date(snipe.snipeTime);
       });
       this.snipes = data;
     }, () => this.alert('Error loading Snipes'));
