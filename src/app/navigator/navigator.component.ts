@@ -66,6 +66,16 @@ export class NavigatorComponent implements OnInit {
     );
   }
 
+  edit(snipe: Snipe): void {
+    this.dialog.open(NewSnipeComponent, {data: {snipe: snipe}}).afterClosed().subscribe(
+      (newSnipe: Snipe) => {
+        if (newSnipe) {
+          this.service.snipe(newSnipe).subscribe(() => this.ngOnInit(), () => this.alert('Error Editing Snipe'));
+        }
+      }
+    );
+  }
+
   alert(message: string): void {
     this.snackBar.open(message, 'Ok', {duration: 5000});
   }
