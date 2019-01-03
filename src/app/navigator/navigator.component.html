@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <span><mat-icon>gavel</mat-icon>&nbsp;{{ title }}</span>
+  <span class="spacer"></span>
+  <button mat-mini-fab (click)="add()">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-list>
+  <ng-container *ngFor="let snipe of snipes">
+    <mat-list-item *ngIf="snipe.auction">
+      <img matListAvatar [src]="snipe.auction.thumbnailUrl" [alt]="snipe.auction.title">
+      <h3 matLine><a [href]="'https://www.ebay.com/itm/' + snipe.auctionId">{{ snipe.auction.title }}</a> - {{ snipe.description }}</h3>
+      <span matLine>{{ snipe.auction.currentBid }} + {{ snipe.auction.shippingCost }} - {{ snipe.auction.seller.id }} ({{ snipe.auction.seller.feedback }} - {{ snipe.auction.seller.positivePercentage }}%)</span>
+      <span matLine>{{ snipe.bid }} on {{ snipe.snipeTime | date:'medium' }}</span>
+
+      <button mat-fab (click)="delete(snipe)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </ng-container>
+</mat-list>
