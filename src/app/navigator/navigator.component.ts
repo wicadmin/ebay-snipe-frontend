@@ -35,6 +35,7 @@ export class NavigatorComponent implements OnInit {
 
             auction.endingAt = new Date(auction.endingAt);
 
+            // Convert UTC Date
             snipe.auction = auction;
           }
         );
@@ -43,6 +44,7 @@ export class NavigatorComponent implements OnInit {
         const bid: any = snipe.bid || '';
         snipe.bid = Number(bid.substr(4));
 
+        // Convert UTC Date
         snipe.snipeTime = new Date(snipe.snipeTime);
       });
       this.snipes = data;
