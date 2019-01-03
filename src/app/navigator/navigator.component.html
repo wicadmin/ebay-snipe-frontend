@@ -16,7 +16,8 @@
         <span *ngIf="snipe.auction.shippingCost > 0"> + {{ snipe.auction.shippingCost | currency }} Shipping</span>
       </span>
       <span matLine>{{ snipe.bid | currency }} on {{ snipe.snipeTime | date:'medium' }}</span>
-      <span matLine *ngIf="snipe.bid < snipe.auction.currentBid" class="body-2">Bid is smaller than Current Bid!</span>
+      <span matLine *ngIf="snipe.bid < snipe.auction.currentBid">Bid is smaller than Current Bid!</span>
+
       <button mat-mini-fab color="primary" (click)="edit(snipe)">
         <mat-icon>edit</mat-icon>
       </button>
