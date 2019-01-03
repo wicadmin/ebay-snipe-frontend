@@ -7,18 +7,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
     <div mat-dialog-content>
       <mat-form-field style="width: 100%;">
         <mat-label>Auction ID</mat-label>
-        <input matInput [(ngModel)]="data.snipe.auctionId" placeholder="eBay Auction ID" required>
+        <input matInput [(ngModel)]="data.snipe.auctionId" placeholder="eBay Auction ID" appearance="outline" required>
       </mat-form-field>
       <br>
       <mat-form-field style="width: 100%;">
-        <mat-label>Bid</mat-label>
         <span matPrefix>$</span>
-        <input matInput type="number" [(ngModel)]="data.snipe.bid" placeholder="Enter Bid Amount" required>
+        <mat-label>Bid</mat-label>
+        <input matInput type="number" [(ngModel)]="data.snipe.bid" placeholder="Enter Bid Amount" appearance="outline" required>
       </mat-form-field>
       <br>
       <mat-form-field style="width: 100%;">
         <mat-label>Description</mat-label>
-        <input matInput [(ngModel)]="data.snipe.description" placeholder="Optional Description">
+        <input matInput [(ngModel)]="data.snipe.description" placeholder="Optional Description" appearance="outline">
       </mat-form-field>
     </div>
     <div mat-dialog-actions>
