@@ -8,7 +8,7 @@ export interface Auction {
     shippingCost: number;
     currentBid: number;
     id: string;
-    buyNowPrice?: number;
+    buyNowPrice: number;
     title: string;
     seller: Seller;
     thumbnailUrl: string;

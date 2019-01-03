@@ -25,9 +25,9 @@ export class NavigatorComponent implements OnInit {
       data.forEach(snipe => {
         this.service.getAuction(snipe.auctionId).subscribe(auction => {
             // Transform Auction data to Numbers
-            const buyNowPrice: any = auction.buyNowPrice;
-            const currentBid: any = auction.currentBid;
-            const shippingCost: any = auction.shippingCost;
+            const buyNowPrice: any = auction.buyNowPrice || '';
+            const currentBid: any = auction.currentBid || '';
+            const shippingCost: any = auction.shippingCost || '';
 
             auction.buyNowPrice = Number(buyNowPrice.substr(4));
             auction.currentBid = Number(currentBid.substr(4));
@@ -38,7 +38,7 @@ export class NavigatorComponent implements OnInit {
         );
 
         // Transform bid to Number
-        const bid: any = snipe.bid;
+        const bid: any = snipe.bid || '';
         snipe.bid = Number(bid.substr(4));
       });
       this.snipes = data;
