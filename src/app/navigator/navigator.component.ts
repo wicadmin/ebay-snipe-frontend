@@ -33,7 +33,11 @@ export class NavigatorComponent implements OnInit {
 
   add(): void {
     this.dialog.open(NewSnipeComponent).afterClosed().subscribe(
-      snipe => this.service.snipe(snipe).subscribe(() => this.ngOnInit(), () => this.alert('Error adding Snipe'))
+      snipe => {
+        if (snipe) {
+          this.service.snipe(snipe).subscribe(() => this.ngOnInit(), () => this.alert('Error adding Snipe'));
+        }
+      }
     );
   }
 

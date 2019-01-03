@@ -16,6 +16,7 @@ import {
   MatSnackBarModule,
   MatToolbarModule
 } from '@angular/material';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnipeService } from './_services/snipe.service';
 import { NewSnipeComponent } from './navigator/new-snipe.component';
@@ -42,9 +43,13 @@ import { FormsModule } from '@angular/forms';
     MatSnackBarModule,
     MatToolbarModule
   ],
-  providers: [SnipeService],
+  providers: [
+    SnipeService
+  ],
   bootstrap: [
-    NavigatorComponent,
+    NavigatorComponent
+  ],
+  entryComponents: [
     NewSnipeComponent
   ]
 })
