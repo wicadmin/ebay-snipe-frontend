@@ -46,7 +46,7 @@ export class NavigatorComponent implements OnInit {
         snipe.bid = Number(bid.substr(4));
 
         // Convert UTC Date
-        snipe.snipeTime = new Date(snipe.snipeTime);
+        snipe.snipeTime = new Date(snipe.snipeTime + 'Z');
       });
       this.snipes = data;
     }, () => this.alert('Error loading Snipes'));
