@@ -5,28 +5,32 @@ This project is a FrontEnd to consume [eBay Snipe Server](https://github.com/rui
 ## Pre Requisites
 
 1. Install [eBay Snipe Server](https://github.com/ruippeixotog/ebay-snipe-server):
-```
-  docker run -d -p 3647:3647 \
-  -e 'EBAY_USERNAME=<your_username>' -e 'EBAY_PASSWORD=<your_password>' \
-  ruippeixotog/ebay-snipe-server:0.2-SNAPSHOT
+```bash
+docker run -d -p 3647:3647 \
+-e 'EBAY_USERNAME=<your_username>' -e 'EBAY_PASSWORD=<your_password>' \
+ruippeixotog/ebay-snipe-server:0.2-SNAPSHOT
 ```
 
 2. Install Angular CLI:
-```npm install -g @angular/cli```
+```bash
+npm install -g @angular/cli
+```
 
 3. Clone this project:
-```git clone https://github.com/Helvio88```
+```bash
+git clone https://github.com/Helvio88
+```
 
 4. Compile this project:
-```
-  cd ebay-snipe-frontend
-  ng build --prod
+```bash
+cd ebay-snipe-frontend
+ng build --prod
 ```
 
 5. Copy dist files to your web folder and set permissions:
-```
-  cp dist/ebay /var/www/ebay -R
-  chown www-data:www-data /var/www/ebay -R
+```bash
+cp dist/ebay /var/www/ebay -R
+chown www-data:www-data /var/www/ebay -R
 ```
 
 ## NginX Configuration
