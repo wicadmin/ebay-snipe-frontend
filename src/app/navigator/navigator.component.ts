@@ -57,7 +57,7 @@ export class NavigatorComponent implements OnInit {
   }
 
   add(): void {
-    this.dialog.open(NewSnipeComponent).afterClosed().subscribe(
+    this.dialog.open(NewSnipeComponent, {data: {snipe: {}, title: 'Add a Snipe'}}).afterClosed().subscribe(
       (snipe: Snipe) => {
         if (snipe) {
           this.service.snipe(snipe).subscribe(() => this.ngOnInit(), () => this.alert('Error adding Snipe'));
@@ -67,7 +67,7 @@ export class NavigatorComponent implements OnInit {
   }
 
   edit(snipe: Snipe): void {
-    this.dialog.open(NewSnipeComponent, {data: {snipe: snipe}}).afterClosed().subscribe(
+    this.dialog.open(NewSnipeComponent, {data: {snipe: snipe, title: 'Edit Snipe'}}).afterClosed().subscribe(
       (newSnipe: Snipe) => {
         if (newSnipe) {
           this.service.snipe(newSnipe).subscribe(() => this.ngOnInit(), () => this.alert('Error Editing Snipe'));

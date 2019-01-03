@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavigatorComponent } from './navigator/navigator.component';
 
 import {
+  MatBottomSheetModule,
   MatButtonModule,
   MatDialogModule,
   MatIconModule,
@@ -34,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule,
     HttpModule,
+    MatBottomSheetModule,
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
