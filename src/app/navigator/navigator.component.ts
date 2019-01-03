@@ -22,7 +22,25 @@ export class NavigatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getSnipes().subscribe(data => {
-      data.forEach(snipe => this.service.getAuction(snipe.auctionId).subscribe(auction => snipe.auction = auction));
+      data.forEach(snipe => {
+        this.service.getAuction(snipe.auctionId).subscribe(auction => {
+            // Transform Auction data to Numbers
+            const buyNowPrice: any = auction.buyNowPrice;
+            const currentBid: any = auction.currentBid;
+            const shippingCost: any = auction.shippingCost;
+
+            auction.buyNowPrice = Number(buyNowPrice.substr(4));
+            auction.currentBid = Number(currentBid.substr(4));
+            auction.shippingCost = Number(shippingCost.substr(4));
+
+            snipe.auction = auction;
+          }
+        );
+
+        // Transform bid to Number
+        const bid: any = snipe.bid;
+        snipe.bid = Number(bid.substr(4));
+      });
       this.snipes = data;
     }, () => this.alert('Error loading Snipes'));
   }

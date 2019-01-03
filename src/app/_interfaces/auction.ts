@@ -5,10 +5,10 @@ export interface Auction {
     endingAt: Date;
     location: string;
     bidCount: number;
-    shippingCost: string;
-    currentBid: string;
+    shippingCost: number;
+    currentBid: number;
     id: string;
-    buyNowPrice: string;
+    buyNowPrice: number;
     title: string;
     seller: Seller;
     thumbnailUrl: string;

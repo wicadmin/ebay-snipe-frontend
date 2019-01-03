@@ -11,8 +11,11 @@
       <img matListAvatar [src]="snipe.auction.thumbnailUrl" [alt]="snipe.auction.title">
       <h3 matLine><a [href]="'https://www.ebay.com/itm/' + snipe.auctionId">{{ snipe.auction.title }}</a> - {{ snipe.description }}</h3>
       <span matLine>{{ snipe.auction.seller.id }} ({{ snipe.auction.seller.feedback }} - {{ snipe.auction.seller.positivePercentage }}%)</span>
-      <span matLine>{{ snipe.auction.currentBid }} + {{ snipe.auction.shippingCost }}</span>
-      <span matLine>{{ snipe.bid }} on {{ snipe.snipeTime | date:'medium' }}</span>
+      <span matLine>
+        {{ snipe.auction.currentBid | currency }}
+        <span *ngIf="snipe.auction.shippingCost > 0"> + {{ snipe.auction.shippingCost | currency }}</span>
+      </span>
+      <span matLine>{{ snipe.bid | currency }} on {{ snipe.snipeTime | date:'medium' }}</span>
       <button mat-mini-fab color="warn" (click)="delete(snipe)">
         <mat-icon>delete</mat-icon>
       </button>
