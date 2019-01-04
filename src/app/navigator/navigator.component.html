@@ -7,7 +7,7 @@
 </mat-toolbar>
 <mat-list>
   <ng-container *ngFor="let snipe of snipes">
-    <mat-list-item *ngIf="snipe.auction">
+    <mat-list-item *ngIf="snipe.auction" (click)="sheet(snipe)">
       <img matListAvatar [src]="snipe.auction.thumbnailUrl" [alt]="snipe.auction.title">
       <h3 matLine><a [href]="'https://www.ebay.com/itm/' + snipe.auctionId">{{ snipe.auction.title }}</a> - {{ snipe.description }}</h3>
       <span matLine>{{ snipe.auction.seller.id }} ({{ snipe.auction.seller.feedback }} - {{ snipe.auction.seller.positivePercentage }}%)</span>
@@ -17,14 +17,6 @@
       </span>
       <span matLine>{{ snipe.bid | currency }} on {{ snipe.snipeTime | date:'medium' }}</span>
       <span matLine *ngIf="snipe.bid < snipe.auction.currentBid">Bid is smaller than Current Bid!</span>
-
-      <button mat-mini-fab color="primary" (click)="sheet(snipe)">
-        <mat-icon>edit</mat-icon>
-      </button>
-      &nbsp;
-      <button mat-mini-fab color="warn" (click)="delete(snipe)">
-        <mat-icon>delete</mat-icon>
-      </button>
     </mat-list-item>
   </ng-container>
 </mat-list>
