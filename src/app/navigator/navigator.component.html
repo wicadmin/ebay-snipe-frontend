@@ -9,7 +9,7 @@
   <ng-container *ngFor="let snipe of snipes">
     <mat-list-item *ngIf="snipe.auction" (click)="sheet(snipe)">
       <img matListAvatar [src]="snipe.auction.thumbnailUrl" [alt]="snipe.auction.title">
-      <h3 matLine><a [href]="'https://www.ebay.com/itm/' + snipe.auctionId">{{ snipe.auction.title }}</a> - {{ snipe.description }}</h3>
+      <h3 matLine><a [href]="'https://www.ebay.com/itm/' + snipe.auctionId" target="_blank">{{ snipe.auction.title }}</a> - {{ snipe.description }}</h3>
       <span matLine>{{ snipe.auction.seller.id }} ({{ snipe.auction.seller.feedback }} - {{ snipe.auction.seller.positivePercentage }}%)</span>
       <span matLine>
         Current Price: {{ snipe.auction.currentBid | currency }}
