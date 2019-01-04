@@ -7,12 +7,12 @@ import { NewSnipeComponent } from './new-snipe.component';
 @Component({
   template: `
   <mat-nav-list>
-    <mat-list-item (click)="edit(snipe)">
+    <mat-list-item (click)="edit(data.snipe)">
       <mat-icon matListIcon>edit</mat-icon>
       <h3 matLine>Edit</h3>
       <p matLine>Edit the Snipe Settings</p>
     </mat-list-item>
-    <mat-list-item (click)="delete(snipe)">
+    <mat-list-item (click)="delete(data.snipe)">
       <mat-icon matListIcon>delete</mat-icon>
       <h3 matLine>Delete</h3>
       <p matLine>Delete the Scheduled Snipe</p>
@@ -25,7 +25,7 @@ export class SnipeSheetComponent  {
   constructor(
     private service: SnipeService,
     private dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public snipe: Snipe) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     edit(snipe: Snipe): void {
       this.dialog.open(NewSnipeComponent, {data: {snipe: snipe, title: 'Edit Snipe'}}).afterClosed().subscribe(() => {});
