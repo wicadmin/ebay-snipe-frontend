@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar, MatDialog, MatBottomSheet } from '@angular/material';
 import { SnipeService } from '../_services/snipe.service';
 import { Snipe } from '../_interfaces/snipe';
 import { NewSnipeComponent } from './new-snipe.component';
 import { Auction } from '../_interfaces/auction';
+import { SnipeSheetComponent } from './snipe-sheet.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class NavigatorComponent implements OnInit {
   constructor(
     private snackBar: MatSnackBar,
     private service: SnipeService,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    private bottomSheet: MatBottomSheet) {
   }
 
   snipes: Snipe[] = [];
@@ -52,10 +54,6 @@ export class NavigatorComponent implements OnInit {
     }, () => this.alert('Error loading Snipes'));
   }
 
-  delete(snipe: Snipe): void {
-    this.service.deleteSnipe(snipe).subscribe(() => this.ngOnInit(), () => this.alert('Error deleting Snipe'));
-  }
-
   add(): void {
     this.dialog.open(NewSnipeComponent, {data: {snipe: {}, title: 'Add a Snipe'}}).afterClosed().subscribe(
       (snipe: Snipe) => {
@@ -66,14 +64,8 @@ export class NavigatorComponent implements OnInit {
     );
   }
 
-  edit(snipe: Snipe): void {
-    this.dialog.open(NewSnipeComponent, {data: {snipe: snipe, title: 'Edit Snipe'}}).afterClosed().subscribe(
-      (newSnipe: Snipe) => {
-        if (newSnipe) {
-          this.service.snipe(newSnipe).subscribe(() => this.ngOnInit(), () => this.alert('Error Editing Snipe'));
-        }
-      }
-    );
+  sheet(snipe: Snipe): void {
+    this.bottomSheet.open(SnipeSheetComponent, {data: snipe});
   }
 
   alert(message: string): void {
