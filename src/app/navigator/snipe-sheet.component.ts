@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { SnipeService } from '../_services/snipe.service';
-import { MatDialog, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
+import { MatDialog, MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material';
 import { Snipe } from '../_interfaces/snipe';
 import { NewSnipeComponent } from './new-snipe.component';
 
@@ -23,15 +23,18 @@ import { NewSnipeComponent } from './new-snipe.component';
 export class SnipeSheetComponent  {
 
   constructor(
+    private sheet: MatBottomSheetRef<SnipeSheetComponent>,
     private service: SnipeService,
     private dialog: MatDialog,
     @Inject(MAT_BOTTOM_SHEET_DATA) public snipe: Snipe) { }
 
     edit(snipe: Snipe): void {
+      this.sheet.dismiss();
       this.dialog.open(NewSnipeComponent, {data: {snipe: snipe, title: 'Edit Snipe'}}).afterClosed().subscribe(() => {});
     }
 
     delete(snipe: Snipe): void {
+      this.sheet.dismiss();
       this.service.deleteSnipe(snipe).subscribe(() => {});
     }
 }
