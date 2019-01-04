@@ -22,11 +22,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnipeService } from './_services/snipe.service';
 import { NewSnipeComponent } from './navigator/new-snipe.component';
 import { FormsModule } from '@angular/forms';
+import { SnipeSheetComponent } from './navigator/snipe-sheet.component';
 
 @NgModule({
   declarations: [
     NavigatorComponent,
-    NewSnipeComponent
+    NewSnipeComponent,
+    SnipeSheetComponent
   ],
   imports: [
     AppRoutingModule,
@@ -52,6 +54,7 @@ import { FormsModule } from '@angular/forms';
     NavigatorComponent
   ],
   entryComponents: [
+    SnipeSheetComponent,
     NewSnipeComponent
   ]
 })
