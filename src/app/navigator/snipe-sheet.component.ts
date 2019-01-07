@@ -30,7 +30,9 @@ export class SnipeSheetComponent  {
 
     edit(snipe: Snipe): void {
       this.sheet.dismiss();
-      this.dialog.open(NewSnipeComponent, {data: {snipe: snipe, title: 'Edit Snipe'}}).afterClosed().subscribe(() => {});
+      this.dialog.open(NewSnipeComponent, {data: {snipe: snipe, title: 'Edit Snipe'}}).afterClosed().subscribe(
+        (editedSnipe: Snipe) => this.service.snipe(editedSnipe).subscribe(() => {})
+      );
     }
 
     delete(snipe: Snipe): void {
