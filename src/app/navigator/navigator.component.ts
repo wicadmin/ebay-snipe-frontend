@@ -65,7 +65,13 @@ export class NavigatorComponent implements OnInit {
   }
 
   sheet(snipe: Snipe): void {
-    this.bottomSheet.open(SnipeSheetComponent, {data: snipe});
+    this.bottomSheet.open(SnipeSheetComponent, {data: snipe}).afterDismissed().subscribe((data: any) => {
+      if (data.action === 'edit') {
+        this.service.snipe(data.snipe).subscribe(() => this.ngOnInit(), () => this.alert('Error editing Snipe'));
+      } else if (data.action === 'delete') {
+        this.service.deleteSnipe(data.snipe).subscribe(() => this.ngOnInit(), () => this.alert('Error deleting Snipe'));
+      }
+    });
   }
 
   alert(message: string): void {
