@@ -55,9 +55,12 @@ export class NavigatorComponent implements OnInit {
   }
 
   add(): void {
+    // Open Dialog with no data
     this.dialog.open(NewSnipeComponent, {data: {snipe: {}, title: 'Add a Snipe'}}).afterClosed().subscribe(
       (snipe: Snipe) => {
+        // If not canceled
         if (snipe) {
+          // Save and Reload
           this.service.snipe(snipe).subscribe(() => this.ngOnInit(), () => this.alert('Error adding Snipe'));
         }
       }
@@ -66,15 +69,22 @@ export class NavigatorComponent implements OnInit {
 
   sheet(snipe: Snipe): void {
     this.bottomSheet.open(SnipeSheetComponent, {data: snipe}).afterDismissed().subscribe((data: any) => {
+      // If Edit
       if (data.action === 'edit') {
-        this.dialog.open(NewSnipeComponent, {data: {snipe: {}, title: 'Add a Snipe'}}).afterClosed().subscribe(
+
+        // Open Edit Dialog with Data
+        this.dialog.open(NewSnipeComponent, {data: {snipe: data.snipe, title: 'Edit Snipe'}}).afterClosed().subscribe(
           (editedSnipe: Snipe) => {
+            // If not canceled
             if (editedSnipe) {
+              // Save and Reload
               this.service.snipe(editedSnipe).subscribe(() => this.ngOnInit(), () => this.alert('Error editing Snipe'));
             }
           }
         );
+      // If Delete
       } else if (data.action === 'delete') {
+        // Delete and reload
         this.service.deleteSnipe(data.snipe).subscribe(() => this.ngOnInit(), () => this.alert('Error deleting Snipe'));
       }
     });
