@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Helvio88/ebay-snipe-frontend.svg?branch=master)](https://travis-ci.org/Helvio88/ebay-snipe-frontend/builds/477020683#)
 # eBay Snipe FrontEnd
 
 This project is a FrontEnd to consume [eBay Snipe Server](https://github.com/ruippeixotog/ebay-snipe-server).
